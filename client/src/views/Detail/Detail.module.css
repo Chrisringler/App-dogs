@@ -1,0 +1,44 @@
+.container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-image: url("./fondo.jpg");
+}
+
+
+.cardDetail{
+ width: 5000px;
+ height: 400px;
+ display: flex;
+ overflow: hidden;
+ background: black;
+ box-shadow: 0 5px 10px #033f49;
+ border-radius: 10px;
+}
+.cardl{
+  color: white;
+  
+}
+.images{
+  border-radius: 10px;
+}
+/*.loadingContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-image: url("https://i.pinimg.com/564x/9d/dd/f3/9dddf3946254bf9f4dc11a60c390d925.jpg");
+}
+
+.loadingImage {
+  width: 100px; 
+  height: 100px;
+  animation: spin 1s linear infinite; 
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}*/

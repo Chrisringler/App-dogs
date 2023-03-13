@@ -1,0 +1,25 @@
+.landing {
+  background-image: url("./imagen.jpg");
+  height: 100vh; 
+  width: 50%; 
+  background-size: cover; 
+}
+.home{
+  display:flex;
+  padding: 10px 300px;
+  background-color: black; 
+  color: #fff; 
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 15px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+ 
+  
+  
+}
+.home:hover{
+  background-color:grey 
+
+}

@@ -1,0 +1,83 @@
+.home{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        background-image: url("./fondo.jpg");
+       }
+       .sortContainer{
+        position:absolute;
+       bottom: 538px;
+        left: 8%;
+        transform: translateX(-50%);
+        width: 200px;
+        margin: 20px auto;
+        text-align: center;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #f3f3f3;
+        border-radius: 10px;
+        padding: 10px;
+        box-shadow: 0 5px 10px #000;
+       }
+       
+       .sortContainer select{
+         height: 30px;
+         width: 110px;
+         font-size: 16px;
+         border-radius: 10px;
+       }
+       
+       .temperamentContainer {
+         position: absolute;
+         top: -70px;
+         right: 8%;
+         transform: translateX(-1%);
+         width: 250px;
+         margin: 20px auto;
+         text-align: center;
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         background-color: black;
+         color: white;
+         border-radius: 100px;
+         padding: 10px;
+         box-shadow: 0 5px 10px #000;
+         margin-top: 70px; 
+       }
+       
+       .temperamentContainer select {
+        background-color: black;
+        color: white;
+         height: 20px;
+         width: 120px;
+         font-size: 16px;
+         border-radius: 10px;
+       }
+       .sourceContainer{
+        position: absolute;
+        top:-10px;
+        transform: translateX(-200%);
+        width: 200px;
+        margin: 20px auto;
+        text-align: center;
+        justify-content: space-between;
+        align-items: center;
+        background-color: black;
+        color: white;
+        border-radius: 10px;
+        padding: 10px;
+        box-shadow: 0 5px 10px #000;
+       }
+
+       .sourceContainer select{
+        background-color: black;
+        color: white;
+         height: 20px;
+         width: 120px;
+         font-size: 16px;
+         border-radius: 10px;
+       }
+
