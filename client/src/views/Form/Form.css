@@ -16,6 +16,7 @@
  flex-direction: column;
  align-items: center;
  gap: 10px;
+ overflow: hidden;
 }
 
 .field{
@@ -42,7 +43,9 @@
     background: linear-gradient(to bottom, #ccc, #eee);
 }
 
-
+.name{
+    display: flex;
+}
 .height{
     display: flex;
 }

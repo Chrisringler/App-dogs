@@ -13,13 +13,16 @@ const Form = () => {
   const [image, setImage] = useState("");
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [selectedTemperaments, setSelectedTemperaments] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filteredTemperaments, setFilteredTemperaments] = useState([]);
+
 
   const temperaments = useSelector(state => state.temperaments.temperaments);
-
+ console.log(temperaments)
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Validations
+    
     if (!name || !heightMin || !heightMax || !weightMin || !weightMax || !lifeSpan || !image || selectedTemperaments.length === 0) {
       alert("Please fill out all fields.");
       return;
@@ -56,24 +59,32 @@ const Form = () => {
     setImage("");
     setSelectedTemperaments([]);
   };
-
-  const handleTemperamentChange = (e) => {
-    const options = e.target.options;
-    let selectedTemperaments = [];
-    for (let i = 0; i < options.length; i++) {
-      if (options[i].selected) {
-        selectedTemperaments = selectedTemperaments.concat(JSON.parse(options[i].value));
-      }
-    }
-    setSelectedTemperaments(selectedTemperaments);
+  const handleSearch = (event) => {
+    const searchTerm = event.target.value.toLowerCase();
+    const filtered = temperaments.filter((temperament) =>
+      temperament.name.toLowerCase().includes(searchTerm)
+    );
+    setFilteredTemperaments(filtered);
   };
+  const [showMenu, setShowMenu] = useState(false);
 
-
+const handleShowMenu = () => {
+  setShowMenu(!showMenu);
+};
+const handleSelect = (temperament) => {
+  if (selectedTemperaments.some((t) => t.id === temperament.id)) {
+    setSelectedTemperaments(
+      selectedTemperaments.filter((t) => t.id !== temperament.id)
+    );
+  } else {
+    setSelectedTemperaments([...selectedTemperaments, temperament]);
+  }
+};
   return (
     <div className="conteiner">
     <form className="form" onSubmit={handleSubmit}>
       
-      <label>
+      <label className="name">
         Nombre:   
         <input className="field" type="text" value={name} onChange={(e) => setName(e.target.value)} />
       </label>
@@ -101,28 +112,41 @@ const Form = () => {
       Image:
         <input className="field" type="text" value={image} onChange={(e) => setImage(e.target.value)} />
       </label>
-      <label className="temperament">
-      Temperaments:
-  <select multiple={true} value={selectedTemperaments.map((t) => t.id)} onChange={handleTemperamentChange}>
-    {temperaments.map((temperament) => (
-      <option key={temperament.id} value={JSON.stringify(temperament)}>
-        {temperament.name}
-      </option>
-    ))}
-  </select>
+      <label>
+  Temperaments:
+  <div className="dropdown">
+    <input
+      type="text"
+      placeholder="Buscar..."
+      value={searchTerm}
+      onChange={(e) => {
+        setSearchTerm(e.target.value);
+        handleSearch(e);
+      }}
+      onFocus={() => setShowMenu(true)}
+    />
+    <button type="button" onClick={handleShowMenu}>
+      {showMenu ? "▲" : "▼"}
+    </button>
+    {showMenu && (
+      <ul>
+        {filteredTemperaments.map((temperament) => (
+          <li key={temperament.id} onClick={() => handleSelect(temperament)}>
+            <input
+              type="checkbox"
+              value={temperament.id}
+              checked={selectedTemperaments.some((t) => t.id === temperament.id)}
+              readOnly
+            />
+            {temperament.name}
+          </li>
+        ))}
+      </ul>
+    )}
+  </div>
 </label>
-<div className="field">
-  <p>Selected temperaments:</p>
-  <ul>
-    {selectedTemperaments.map((temperament) => (
-      <li key={temperament.id}>{temperament.name}</li>
-    ))}
-  </ul>
-</div>
-      <button className="boton" type="submit">Create new race</button>
-      {showSuccessMessage && <p>The dog was created correctly!!</p>}
-
-    
+<button className="boton" type="submit">Create new race</button>
+      {showSuccessMessage && <p>The dog was created correctly!!</p>} 
     </form>
     </div>
   );
