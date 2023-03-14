@@ -50,10 +50,11 @@ const createDog = async (name, image, weight, height, life_span, temperaments) =
 
 
   const getDogImageById = async (imageId) => {
-    const imageData = await axios.get(`https://api.thedogapi.com/v1/images/${imageId}`);
-    return imageData.data;
+    const breedsData = await axios.get(`https://api.thedogapi.com/v1/breeds`);
+    const breedInfo = breedsData.data.find((breed) => breed.reference_image_id === imageId);
+    return breedInfo.image;
   };
-
+  
  const cleanArray = (arr)=>{
   return arr.map((elem)=>{
     return {
