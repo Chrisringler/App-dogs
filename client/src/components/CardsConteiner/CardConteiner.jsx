@@ -39,20 +39,25 @@ const CardConteiner = ({ currentPage, setCurrentPage, dogsPerPage }) => {
       );
     })}
   </div>
-      <div className={style.pagination}>
-        {pageNumbers.map((number) => {
-          return (
-            <div
-              key={number}
-              id={number}
-              onClick={handleClick}
-              className={currentPage === number ? style.active : null}
-            >
-              {number}
-            </div>
-          );
-        })}
+  <div className={style.pagination}>
+  <div className={style.arrow} onClick={() => setCurrentPage(currentPage - 1)}>{'<'}</div>
+  {pageNumbers.map((number) => {
+    return (
+      <div
+        key={number}
+        id={number}
+        onClick={handleClick}
+        className={currentPage === number ? style.active : null}
+      >
+        {number}
       </div>
+    );
+  })}
+  <div className={style.arrow} onClick={() => setCurrentPage(currentPage + 1)}>{'>'}</div>
+</div>
+<div className={style.pageInfo}>
+  Página {currentPage} de {Math.ceil(dogs.length / dogsPerPage)}
+</div>
     </div>
   );
 };

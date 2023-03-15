@@ -18,11 +18,10 @@ const Form = () => {
 
 
   const temperaments = useSelector(state => state.temperaments.temperaments);
- console.log(temperaments)
+  console.log(temperaments)
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    
     if (!name || !heightMin || !heightMax || !weightMin || !weightMax || !lifeSpan || !image || selectedTemperaments.length === 0) {
       alert("Please fill out all fields.");
       return;
@@ -59,6 +58,7 @@ const Form = () => {
     setImage("");
     setSelectedTemperaments([]);
   };
+  
   const handleSearch = (event) => {
     const searchTerm = event.target.value.toLowerCase();
     const filtered = temperaments.filter((temperament) =>

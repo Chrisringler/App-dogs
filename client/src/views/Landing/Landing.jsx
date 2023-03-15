@@ -12,7 +12,7 @@ const Landing = ()=>{
     return(
         <div className={style.landing}>
           <div className={style.content}>
-        <h1 className={style.title}>The Dog App</h1>
+         <h1 className={style.title}>The Dog App</h1>
          <Link className={style.home} to="/home"> Home</Link>
          </div>
          </div>

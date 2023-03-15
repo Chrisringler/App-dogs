@@ -6,7 +6,7 @@ export const GET_TEMPERAMENTS = "GET_TEMPERAMENTS"
 export const GET_DOGS_BY_TEMPERAMENT = "GET_DOGS_BY_TEMPERAMENT"
 
 
-export const getDogs = (page, limit, sortType, sortProperty) => {
+export const getDogs = (a,b ,sortType, sortProperty) => {
   return async function (dispatch) {
     const apiData = await axios.get("http://localhost:3001/dogs");
     let dogs = apiData.data;

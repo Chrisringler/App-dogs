@@ -34,6 +34,10 @@ const Home = () => {
     }
   }, [dispatch, currentPage, dogsPerPage, sortType, sortProperty, metricWeight, temperamentFilter, sourceFilter]);
   
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [sortType, sortProperty, metricWeight, temperamentFilter, sourceFilter]);
+
   
   const handleSortChange = (event) => {
     const { value } = event.target;
@@ -54,46 +58,45 @@ const Home = () => {
     dispatch(getDogsByTemperament(value));
   };
   console.log("temperaments:", temperaments);
-  return (
-    <div className={style.home}>
-      <div className={style.sortContainer}>
-        <label htmlFor="sort-select">Sort by:</label>
-        <select id="sort-select" onChange={handleSortChange}>
-          <option value="name-asc">Name (A-Z)</option>
-          <option value="name-desc">Name (Z-A)</option>
-          <option value="weight-asc">Weight (Low to High)</option>
-          <option value="weight-desc">Weight (High to Low)</option>
+      return (
+        <div className={style.home}>
+          <div className={style.sortContainer}>
+            <label htmlFor="sort-select">Sort by:</label>
+            <select id="sort-select" onChange={handleSortChange}>
+              <option value="name-asc">Name (A-Z)</option>
+              <option value="name-desc">Name (Z-A)</option>
+              <option value="weight-asc">Weight (Low to High)</option>
+              <option value="weight-desc">Weight (High to Low)</option>
+            </select>
+          </div>
+          <div className={style.temperamentContainer}>
+              <label htmlFor="temperament-select">Sort by temperament: </label>
+              <select id="temperament-select" onChange={(e) => handleTemperamentChange(e.target.value)}>
+              <option value="">Temperament</option>
+              {Array.isArray(temperaments) && temperaments.map((temperament) => (
+                <option value={temperament.name} key={temperament.id}>
+          {temperament.name}
+        </option>
+      ))}
         </select>
-      </div>
-      <div className={style.temperamentContainer}>
-  <label htmlFor="temperament-select">Sort by temperament: </label>
-  <select id="temperament-select" onChange={(e) => handleTemperamentChange(e.target.value)}>
-  <option value="">Temperament</option>
-  {Array.isArray(temperaments) && temperaments.map((temperament) => (
-    <option value={temperament.name} key={temperament.id}>
-      {temperament.name}
-    </option>
-  ))}
-</select>
-</div>
-<div className={style.sourceContainer}>
-  <label htmlFor="source-select">Source: </label>
-  <select id="source-select" onChange={handleSourceChange}>
-    <option value="all">All</option>
-    <option value="api">API</option>
-    <option value="database">Database</option>
-  </select>
-</div>
-
-      <CardConteiner
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
-        dogsPerPage={dogsPerPage}
-      />
-    </div>
-  );
-};
-export default Home
+       </div>
+        <div className={style.sourceContainer}>
+          <label htmlFor="source-select">Source: </label>
+          <select id="source-select" onChange={handleSourceChange}>
+            <option value="all">All</option>
+            <option value="api">API</option>
+            <option value="database">Database</option>
+          </select>
+        </div>
+          <CardConteiner
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+            dogsPerPage={dogsPerPage}
+          />
+        </div>
+      );
+    };
+    export default Home
 
 
 //  const temperaments = ["Stubborn", "Curious", "Playful", "Adventurous", "Active", "Fun-loving", "Aloof", "Clownish", "Dignified", "Independent", "Happy", "Wild", "Hardworking", "Dutiful", "Outgoing", "Friendly", "Alert", "Confident", "Intelligent", "Courageous", "Loyal", "Responsive", "Faithful", "Docile", "Composed", "Receptive", "Protective", "Trainable", "Responsible", "Gentle", "Affectionate", "Devoted", "Assertive", "Dominant", "Obedient", "Reserved", "Kind", "Sweet-Tempered", "Attentive", "Tenacious", "Companionable", "Even-Tempered", "Rugged", "Fierce", "Refined", "Joyful", "Agile", "Sensitive", "Adaptable", "Trusting", "Territorial", "Keen", "Responsive", "Feisty", "Cheerful", "Self-confident", "Hardy", "Calm", "Good-tempered", "Watchful", "Hard-working"];
