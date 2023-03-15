@@ -83,7 +83,7 @@ const handleSelect = (temperament) => {
   return (
     <div className="conteiner">
     <form className="form" onSubmit={handleSubmit}>
-      
+
       <label className="name">
         Nombre:   
         <input className="field" type="text" value={name} onChange={(e) => setName(e.target.value)} />
@@ -147,7 +147,7 @@ const handleSelect = (temperament) => {
 </label>
 <button className="boton" type="submit">Create new race</button>
       {showSuccessMessage && <p>The dog was created correctly!!</p>} 
-    </form>
+    </form> 
     </div>
   );
 };

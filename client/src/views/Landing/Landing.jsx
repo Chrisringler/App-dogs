@@ -11,10 +11,11 @@ const Landing = ()=>{
       }, [getTemperaments()]);
     return(
         <div className={style.landing}>
-        <h1>The Dog App</h1>
+          <div className={style.content}>
+        <h1 className={style.title}>The Dog App</h1>
          <Link className={style.home} to="/home"> Home</Link>
          </div>
-        
+         </div>
     )
 }
 

@@ -11,14 +11,15 @@ const Home = () => {
   const [sortType, setSortType] = useState("asc");
   const [sortProperty, setSortProperty] = useState("name");
   const [metricWeight, setMetricWeight] = useState(false);
-  const [temperamentFilter, setTemperamentFilter] = useState("");
-  const [sourceFilter, setSourceFilter] = useState("all");
+  const [temperamentFilter, setTemperamentFilter] = useState("");;
   const temperaments = useSelector(state => state.temperaments.temperaments);
+  const [sourceFilter, setSourceFilter] = useState(localStorage.getItem('sourceFilter') || 'all');
 
   
   const handleSourceChange = (event) => {
     const { value } = event.target;
     setSourceFilter(value);
+    localStorage.setItem('sourceFilter', value);
   };
   
   useEffect(() => {
@@ -34,7 +35,6 @@ const Home = () => {
   }, [dispatch, currentPage, dogsPerPage, sortType, sortProperty, metricWeight, temperamentFilter, sourceFilter]);
   
   
-
   const handleSortChange = (event) => {
     const { value } = event.target;
     if (value === "name-asc" || value === "name-desc") {

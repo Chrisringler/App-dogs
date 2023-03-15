@@ -104,6 +104,7 @@ const searchDogByName = async (name) => {
           [Op.iLike]: `%${name}%`,
         },
       },
+      include: Temperament
     }),
     axios.get('https://api.thedogapi.com/v1/breeds', {
       headers: {
@@ -117,5 +118,6 @@ const searchDogByName = async (name) => {
 
   return [...filterApi, ...databaseDogs];
 };
+
 
 module.exports = { createDog, getDogById, getAllDogs, searchDogByName };

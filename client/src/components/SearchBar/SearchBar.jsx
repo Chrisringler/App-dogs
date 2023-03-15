@@ -31,21 +31,27 @@ const SearchBar = () => {
       <input className="input" type="text" value={dogName} onChange={handleInputChange} placeholder="Enter Dog Name" />
       <button type="submit">Search</button>
     </div>
-  
     {showResult && name && name.name && (
-      <div className="card">
-        <button className="clear-button" onClick={handleClear}>x</button>
-        <div className='face front'>
+        <div className="card">
+          <button className="clear-button" onClick={handleClear}>x</button>
+          <div className='face front'>
           <img src={name.image} alt={name.name} />
           <h2 className='title'>{name.name}</h2>
-        </div>
-        <div className='face back'>
-          <h2>{name.name}</h2>
-          <p>temperaments: {name.temperament}</p>
-          <p>weight: {name.weight}</p>
-        </div>
-      </div>
-    )}
+    </div>
+    <div className='face back'>
+         <h2>{name.name}</h2>
+         <p>weight: {name.weight}</p>
+        {name.temperaments && name.temperaments.length > 0 &&
+        <p>temperaments: {name.temperaments.map(t => t.name).join(', ')}</p>
+      }
+      {!name.temperaments &&
+        <p>temperament: {name.temperament}</p>
+      }
+    </div>
+  </div>
+)}
+
+
   </form>
   );
 };
