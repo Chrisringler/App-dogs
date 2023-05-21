@@ -36,6 +36,7 @@ npm -v
 ## **📋 Requisitos para ejecutarla localmente...**
 
  1 instalar PostgreSQL
+ </br>
 2. En la carpeta **`api`** deberás crear un archivo llamado: **`.env`** que tenga la siguiente forma:
 
    ```env
