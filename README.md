@@ -68,7 +68,8 @@ npm start
 cd client
 </br>
 
-npm start
+npm start 
+</br>
 Nota: Asegúrate de tener ambos servidores (backend y frontend) en ejecución para el correcto funcionamiento de la aplicación.
 
 
