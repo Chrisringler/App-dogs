@@ -61,10 +61,13 @@ npm install
 cd ../client
 npm install
 # Ejecutar el backend
-cd api
+cd api 
+</br>
 npm start
 # Ejecutar el frontend
 cd client
+</br>
+
 npm start
 Nota: Asegúrate de tener ambos servidores (backend y frontend) en ejecución para el correcto funcionamiento de la aplicación.
 
