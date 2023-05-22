@@ -52,6 +52,22 @@ npm -v
 <br />
 
 ---
+## Instalación y ejecución
+
+# Instalar dependencias del proyecto
+cd api
+npm install
+
+cd ../client
+npm install
+# Ejecutar el backend
+cd api
+npm start
+# Ejecutar el frontend
+cd client
+npm start
+Nota: Asegúrate de tener ambos servidores (backend y frontend) en ejecución para el correcto funcionamiento de la aplicación.
+
 
 
 
